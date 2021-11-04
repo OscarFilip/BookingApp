@@ -1,0 +1,16 @@
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.csproj.AssemblyReference.cache
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.AssemblyInfoInputs.cache
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.AssemblyInfo.cs
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.csproj.CoreCompileInputs.cache
+C:\Users\oscar\source\repos\BokningApp\BokningApp\bin\Debug\net5.0\BokningApp.exe
+C:\Users\oscar\source\repos\BokningApp\BokningApp\bin\Debug\net5.0\BokningApp.deps.json
+C:\Users\oscar\source\repos\BokningApp\BokningApp\bin\Debug\net5.0\BokningApp.runtimeconfig.json
+C:\Users\oscar\source\repos\BokningApp\BokningApp\bin\Debug\net5.0\BokningApp.runtimeconfig.dev.json
+C:\Users\oscar\source\repos\BokningApp\BokningApp\bin\Debug\net5.0\BokningApp.dll
+C:\Users\oscar\source\repos\BokningApp\BokningApp\bin\Debug\net5.0\ref\BokningApp.dll
+C:\Users\oscar\source\repos\BokningApp\BokningApp\bin\Debug\net5.0\BokningApp.pdb
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.dll
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\ref\BokningApp.dll
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.pdb
+C:\Users\oscar\source\repos\BokningApp\BokningApp\obj\Debug\net5.0\BokningApp.genruntimeconfig.cache
