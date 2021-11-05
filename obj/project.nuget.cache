@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YPuftZTd1Kiv2znaPYC8HZTiNs4+ERWCld65Yfrivsk0Y30/JHjCwTAYtNR16WbUPrIYMHatYNBXUD+7HvJtlQ==",
+  "dgSpecHash": "cd/wgDCJu5RrD0dXnxhCqUoXCEyb8G/kw4zb6nndlFMlx86FnmYPHNgG9Pv2Q8YRL3N9EdMGv2rasTFKJh5Nhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oscar\\source\\repos\\BokningApp\\BokningApp\\BokningApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Repos\\BookingApp\\BokningApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\A388210\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

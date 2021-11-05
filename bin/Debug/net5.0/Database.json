@@ -1,0 +1,126 @@
+{
+  "$id": "1",
+  "Users": {
+    "$id": "2",
+    "$values": [
+      {
+        "$id": "3",
+        "Name": "Admin",
+        "IsAdmin": true,
+        "UserBookings": {
+          "$id": "4",
+          "$values": []
+        }
+      },
+      {
+        "$id": "5",
+        "Name": "Marie Svensson",
+        "IsAdmin": false,
+        "UserBookings": {
+          "$id": "6",
+          "$values": [
+            {
+              "$id": "7",
+              "BookingNumber": 448,
+              "BookedBy": {
+                "$ref": "5"
+              },
+              "StudentName": "Nils",
+              "Instructor": {
+                "$id": "8",
+                "Name": "Markus Johansson",
+                "AlpineSkiLevel": 5,
+                "AlpineSnowboardLevel": 0,
+                "CrosscountryLevel": 1,
+                "SitskiLevel": 2
+              },
+              "Day": 0,
+              "TimeOfLesson": 0,
+              "Discipline": 0,
+              "Level": 1
+            }
+          ]
+        }
+      },
+      {
+        "$id": "9",
+        "Name": "Martin Skog",
+        "IsAdmin": false,
+        "UserBookings": {
+          "$id": "10",
+          "$values": []
+        }
+      },
+      {
+        "$id": "11",
+        "Name": "Karl Von Linne",
+        "IsAdmin": false,
+        "UserBookings": {
+          "$id": "12",
+          "$values": []
+        }
+      }
+    ]
+  },
+  "Instructors": {
+    "$id": "13",
+    "$values": [
+      {
+        "$ref": "8"
+      },
+      {
+        "$id": "14",
+        "Name": "Mads Madsen",
+        "AlpineSkiLevel": 4,
+        "AlpineSnowboardLevel": 4,
+        "CrosscountryLevel": 1,
+        "SitskiLevel": 0
+      },
+      {
+        "$id": "15",
+        "Name": "Julia Berg",
+        "AlpineSkiLevel": 2,
+        "AlpineSnowboardLevel": 2,
+        "CrosscountryLevel": 0,
+        "SitskiLevel": 0
+      },
+      {
+        "$id": "16",
+        "Name": "Therese Svan",
+        "AlpineSkiLevel": 3,
+        "AlpineSnowboardLevel": 0,
+        "CrosscountryLevel": 0,
+        "SitskiLevel": 0
+      },
+      {
+        "$id": "17",
+        "Name": "P\u00E4r Sten",
+        "AlpineSkiLevel": 2,
+        "AlpineSnowboardLevel": 0,
+        "CrosscountryLevel": 5,
+        "SitskiLevel": 5
+      }
+    ]
+  },
+  "Bookings": {
+    "$id": "18",
+    "$values": [
+      {
+        "$id": "19",
+        "BookingNumber": 137,
+        "BookedBy": {
+          "$ref": "5"
+        },
+        "StudentName": "Nils",
+        "Instructor": {
+          "$ref": "8"
+        },
+        "Day": 0,
+        "TimeOfLesson": 0,
+        "Discipline": 0,
+        "Level": 1
+      }
+    ]
+  },
+  "ActiveUser": null
+}

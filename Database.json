@@ -1,0 +1,118 @@
+{
+  "Users": [
+    {
+      "Name": "Admin",
+      "IsAdmin": true,
+      "UserBookings": []
+    },
+    {
+      "Name": "Marie Svensson",
+      "IsAdmin": false,
+      "UserBookings": [
+        {
+          "BookingNumber": 347,
+          "BookedBy": null,
+          "StudentName": "Nils",
+          "Instructor": {
+            "Name": "Markus Johansson",
+            "AlpineSkiLevel": 5,
+            "AlpineSnowboardLevel": 0,
+            "CrosscountryLevel": 1,
+            "SitskiLevel": 2
+          },
+          "Day": 0,
+          "TimeOfLesson": 0,
+          "Discipline": 0,
+          "Level": 1
+        }
+      ]
+    },
+    {
+      "Name": "Martin Skog",
+      "IsAdmin": false,
+      "UserBookings": []
+    },
+    {
+      "Name": "Karl Von Linne",
+      "IsAdmin": false,
+      "UserBookings": []
+    }
+  ],
+  "Instructors": [
+    {
+      "Name": "Markus Johansson",
+      "AlpineSkiLevel": 5,
+      "AlpineSnowboardLevel": 0,
+      "CrosscountryLevel": 1,
+      "SitskiLevel": 2
+    },
+    {
+      "Name": "Mads Madsen",
+      "AlpineSkiLevel": 4,
+      "AlpineSnowboardLevel": 4,
+      "CrosscountryLevel": 1,
+      "SitskiLevel": 0
+    },
+    {
+      "Name": "Julia Berg",
+      "AlpineSkiLevel": 2,
+      "AlpineSnowboardLevel": 2,
+      "CrosscountryLevel": 0,
+      "SitskiLevel": 0
+    },
+    {
+      "Name": "Therese Svan",
+      "AlpineSkiLevel": 3,
+      "AlpineSnowboardLevel": 0,
+      "CrosscountryLevel": 0,
+      "SitskiLevel": 0
+    },
+    {
+      "Name": "Pär Sten",
+      "AlpineSkiLevel": 2,
+      "AlpineSnowboardLevel": 0,
+      "CrosscountryLevel": 5,
+      "SitskiLevel": 5
+    }
+  ],
+  "Bookings": [
+    {
+      "BookingNumber": 177,
+      "BookedBy": {
+        "Name": "Marie Svensson",
+        "IsAdmin": false,
+        "UserBookings": [
+          {
+            "BookingNumber": 347,
+            "BookedBy": null,
+            "StudentName": "Nils",
+            "Instructor": {
+              "Name": "Markus Johansson",
+              "AlpineSkiLevel": 5,
+              "AlpineSnowboardLevel": 0,
+              "CrosscountryLevel": 1,
+              "SitskiLevel": 2
+            },
+            "Day": 0,
+            "TimeOfLesson": 0,
+            "Discipline": 0,
+            "Level": 1
+          }
+        ]
+      },
+      "StudentName": "Nils",
+      "Instructor": {
+        "Name": "Markus Johansson",
+        "AlpineSkiLevel": 5,
+        "AlpineSnowboardLevel": 0,
+        "CrosscountryLevel": 1,
+        "SitskiLevel": 2
+      },
+      "Day": 0,
+      "TimeOfLesson": 0,
+      "Discipline": 0,
+      "Level": 1
+    }
+  ],
+  "ActiveUser": null
+}

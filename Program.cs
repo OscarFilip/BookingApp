@@ -1,6 +1,5 @@
-﻿using BokningApp.Enums;
-using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.IO;
 
 namespace BokningApp
 {
@@ -8,17 +7,26 @@ namespace BokningApp
     {
         static void Main(string[] args)
         {
-            Database database = new Database();
-
-
-
+            DatabaseClass oldData = JsonConvert.DeserializeObject<DatabaseClass>(File.ReadAllText(@"c:\Repos\BookingApp\Database.json"));
+            Database.Users = oldData?.Users ?? Database.Users;
+            Database.Instructors = oldData?.Instructors ?? Database.Instructors;
+            Database.Bookings = oldData?.Bookings ?? Database.Bookings;
 
             bool runLoop = true;
             while (runLoop)
             {
-                MenuMethods.Login(database);
-                MenuMethods.RunMenu(database);
+                MenuMethods.Login();
+                MenuMethods.RunMenu();
+                runLoop = false;
             }
+            var options = new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                Formatting = Formatting.Indented,
+            };
+            var db = new DatabaseClass(Database.Users, Database.Instructors, Database.Bookings);
+            string newData = JsonConvert.SerializeObject(db, options);
+            File.WriteAllText(@"c:\Repos\BookingApp\Database.json", newData);
         }
     }
 }

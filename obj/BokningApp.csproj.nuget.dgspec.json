@@ -1,28 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oscar\\source\\repos\\BokningApp\\BokningApp\\BokningApp.csproj": {}
+    "C:\\Repos\\BookingApp\\BokningApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oscar\\source\\repos\\BokningApp\\BokningApp\\BokningApp.csproj": {
+    "C:\\Repos\\BookingApp\\BokningApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oscar\\source\\repos\\BokningApp\\BokningApp\\BokningApp.csproj",
+        "projectUniqueName": "C:\\Repos\\BookingApp\\BokningApp.csproj",
         "projectName": "BokningApp",
-        "projectPath": "C:\\Users\\oscar\\source\\repos\\BokningApp\\BokningApp\\BokningApp.csproj",
-        "packagesPath": "C:\\Users\\oscar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oscar\\source\\repos\\BokningApp\\BokningApp\\obj\\",
+        "projectPath": "C:\\Repos\\BookingApp\\BokningApp.csproj",
+        "packagesPath": "C:\\Users\\A388210\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\BookingApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\A388210\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://maven2.it.volvo.net:8443/repository/ESWConfigurationandRelease/": {},
+          "https://maven2.it.volvo.net:8443/repository/drs-ms-core/": {},
+          "https://maven2.it.volvo.net:8443/repository/nuget-drs-ms/": {}
         },
         "frameworks": {
           "net5.0": {
@@ -39,6 +48,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -54,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

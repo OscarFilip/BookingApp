@@ -9,7 +9,7 @@ namespace BokningApp
 {
     public class AdminBookingMethods
     {
-        public static void HandleBookingsMenu(IDatabase database)
+        public static void HandleBookingsMenu()
         {
             bool runLoop = true;
             while (runLoop)
@@ -22,21 +22,21 @@ namespace BokningApp
                 switch (input)
                 {
                     case 1:
-                        AdminAddBooking(database);
+                        AdminAddBooking();
                         break;
                     case 2:
-                        AdminRemoveBooking(database);
+                        AdminRemoveBooking();
                         break;
                     case 3:
-                        AdminEditBooking(database);
+                        AdminEditBooking();
                         break;
                 }
             }
         }
 
-        private static void AdminAddBooking(IDatabase database)
+        private static void AdminAddBooking()
         {
-            var thisUser = PlaceBookingOnCustomer(database);
+            var thisUser = PlaceBookingOnCustomer();
 
             Console.WriteLine("What is the name of the student: ");
             string inputName = Console.ReadLine();
@@ -45,17 +45,17 @@ namespace BokningApp
 
             var inputLevel = ChooseLevelOfLesson();
 
-            var inputInstructor = ChooseInstructorForLesson(database, inputDiscipline, inputLevel);
+            var inputInstructor = ChooseInstructorForLesson(inputDiscipline, inputLevel);
 
             var inputDay = ChooseDayForLesson();
 
-            var inputTime = ChooseTimeForLesson(database, inputInstructor, inputDay);
+            var inputTime = ChooseTimeForLesson(inputInstructor, inputDay);
 
-            database.Bookings.Add(new Booking(thisUser, inputName, inputInstructor, inputDay, inputTime, inputDiscipline, inputLevel));
-            thisUser.UserBookings.Add(database.Bookings.Last());
+            Database.Bookings.Add(new Booking(thisUser, inputName, inputInstructor, inputDay, inputTime, inputDiscipline, inputLevel));
+            thisUser.UserBookings.Add(Database.Bookings.Last());
         }
 
-        public static TimeOfLesson ChooseTimeForLesson(IDatabase database, Instructor instructor, Day day)
+        public static TimeOfLesson ChooseTimeForLesson(Instructor instructor, Day day)
         {
             var choosenTime = TimeOfLesson.FirstLesson;
             List<TimeOfLesson> availableTimes = new List<TimeOfLesson>();
@@ -64,7 +64,7 @@ namespace BokningApp
             availableTimes.Add(TimeOfLesson.ThirdLesson);
             availableTimes.Add(TimeOfLesson.FourthLesson);
             Console.WriteLine("Available times for this instructor on this day: ");
-            foreach (var booking in database.Bookings)
+            foreach (var booking in Database.Bookings)
             {
                 if (instructor == booking.Instructor && day == booking.Day)
                 {
@@ -150,38 +150,38 @@ namespace BokningApp
             return inputDay;
         }
 
-        public static Instructor ChooseInstructorForLesson(IDatabase database, Discipline inputDiscipline, Level inputLevel)
+        public static Instructor ChooseInstructorForLesson(Discipline inputDiscipline, Level inputLevel)
         {
 
             List<Instructor> competentInstructors = new List<Instructor>();
-            for (int i = 0; i < database.Instructors.Count; i++)
+            for (int i = 0; i < Database.Instructors.Count; i++)
             {
                 if (inputDiscipline == Discipline.AlpineSki)
                 {
-                    if (database.Instructors[i].AlpineSkiLevel >= inputLevel)
+                    if (Database.Instructors[i].AlpineSkiLevel >= inputLevel)
                     {
-                        competentInstructors.Add(database.Instructors[i]);
+                        competentInstructors.Add(Database.Instructors[i]);
                     }
                 }
                 if (inputDiscipline == Discipline.AlpineSnowboard)
                 {
-                    if (database.Instructors[i].AlpineSnowboardLevel >= inputLevel)
+                    if (Database.Instructors[i].AlpineSnowboardLevel >= inputLevel)
                     {
-                        competentInstructors.Add(database.Instructors[i]);
+                        competentInstructors.Add(Database.Instructors[i]);
                     }
                 }
                 if (inputDiscipline == Discipline.Crosscountry)
                 {
-                    if (database.Instructors[i].CrosscountryLevel >= inputLevel)
+                    if (Database.Instructors[i].CrosscountryLevel >= inputLevel)
                     {
-                        competentInstructors.Add(database.Instructors[i]);
+                        competentInstructors.Add(Database.Instructors[i]);
                     }
                 }
                 if (inputDiscipline == Discipline.Sitski)
                 {
-                    if (database.Instructors[i].SitskiLevel >= inputLevel)
+                    if (Database.Instructors[i].SitskiLevel >= inputLevel)
                     {
-                        competentInstructors.Add(database.Instructors[i]);
+                        competentInstructors.Add(Database.Instructors[i]);
                     }
                 }
             }
@@ -235,14 +235,14 @@ namespace BokningApp
             return inputLevel;
         }
 
-        private static User PlaceBookingOnCustomer(IDatabase database)
+        private static User PlaceBookingOnCustomer()
         {
             User thisUser = new User();
             Console.WriteLine("Place the booking on which customer: ");
-            AdminCustomerMethods.WriteAllCustomers(database);
+            AdminCustomerMethods.WriteAllCustomers();
             Console.WriteLine("Type full name of which customer to book on: ");
             string inputUser = Console.ReadLine();
-            foreach (var User in database.Users)
+            foreach (var User in Database.Users)
             {
                 if (inputUser == User.Name)
                 {
@@ -284,12 +284,12 @@ namespace BokningApp
             return inputDiscipline;
         }
 
-        private static void AdminRemoveBooking(IDatabase database)
+        private static void AdminRemoveBooking()
         {
-            AdminCustomerMethods.WriteAllCustomers(database);
+            AdminCustomerMethods.WriteAllCustomers();
             Console.WriteLine("On which customer would you like to remove a booking? Write full name of customer: ");
             string strInput = Console.ReadLine();
-            foreach (var User in database.Users)
+            foreach (var User in Database.Users)
             {
                 if(strInput == User.Name)
                 {
@@ -304,7 +304,7 @@ namespace BokningApp
                         if (intInput == booking.BookingNumber)
                         {
                             User.UserBookings.Remove(booking);
-                            database.Bookings.Remove(booking);
+                            Database.Bookings.Remove(booking);
                             break;
                         }
                     }
@@ -312,12 +312,12 @@ namespace BokningApp
             }
         }
 
-        private static void AdminEditBooking(IDatabase database)
+        private static void AdminEditBooking()
         {
-            AdminCustomerMethods.WriteAllCustomers(database);
+            AdminCustomerMethods.WriteAllCustomers();
             Console.WriteLine("On which customer would you like to edit a booking? Write full name of customer: ");
             string strInput = Console.ReadLine();
-            foreach (var User in database.Users)
+            foreach (var User in Database.Users)
             {
                 if (strInput == User.Name)
                 {
@@ -339,7 +339,7 @@ namespace BokningApp
                             switch (intInput2)
                             {
                                 case 1:
-                                    booking.BookedBy = PlaceBookingOnCustomer(database);
+                                    booking.BookedBy = PlaceBookingOnCustomer();
                                     break;
                                 case 2:
                                     Console.WriteLine("What is the name of the student: ");
@@ -350,11 +350,11 @@ namespace BokningApp
 
                                     var inputLevel = ChooseLevelOfLesson();
 
-                                    var inputInstructor = ChooseInstructorForLesson(database, inputDiscipline, inputLevel);
+                                    var inputInstructor = ChooseInstructorForLesson(inputDiscipline, inputLevel);
 
                                     var inputDay = ChooseDayForLesson();
 
-                                    var inputTime = ChooseTimeForLesson(database, inputInstructor, inputDay);
+                                    var inputTime = ChooseTimeForLesson(inputInstructor, inputDay);
 
                                     booking.Discipline = inputDiscipline;
                                     booking.Level = inputLevel;

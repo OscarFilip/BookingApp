@@ -8,7 +8,7 @@ namespace BokningApp
 {
     public class CustomerCustomerMethods
     {
-        internal static void HandleBookings(IDatabase database)
+        internal static void HandleBookings()
         {
             bool runLoop = true;
             while (runLoop)
@@ -28,51 +28,51 @@ namespace BokningApp
 
                         var inputLevel = AdminBookingMethods.ChooseLevelOfLesson();
 
-                        var inputInstructor = AdminBookingMethods.ChooseInstructorForLesson(database, inputDiscipline, inputLevel);
+                        var inputInstructor = AdminBookingMethods.ChooseInstructorForLesson(inputDiscipline, inputLevel);
 
                         var inputDay = AdminBookingMethods.ChooseDayForLesson();
 
-                        var inputTime = AdminBookingMethods.ChooseTimeForLesson(database, inputInstructor, inputDay);
+                        var inputTime = AdminBookingMethods.ChooseTimeForLesson( inputInstructor, inputDay);
 
-                        database.Bookings.Add(new Booking(database.ActiveUser, inputName, inputInstructor, inputDay, inputTime, inputDiscipline, inputLevel));
-                        database.ActiveUser.UserBookings.Add(database.Bookings.Last());
+                        Database.Bookings.Add(new Booking(Database.ActiveUser, inputName, inputInstructor, inputDay, inputTime, inputDiscipline, inputLevel));
+                        Database.ActiveUser.UserBookings.Add(Database.Bookings.Last());
                         break;
                     case 2:
-                        RemoveBooking(database);
+                        RemoveBooking();
                         break;
                     case 3:
-                        EditBooking(database);
+                        EditBooking();
                         break;
                 }
             }
         }
-        private static void RemoveBooking(IDatabase database)
+        private static void RemoveBooking()
         {
-            foreach (var booking in database.ActiveUser.UserBookings)
+            foreach (var booking in Database.ActiveUser.UserBookings)
             {
                 AdminBookingMethods.WriteBooking(booking);
             }
             Console.WriteLine("Type booking number of booking you would like to remove: ");
             int intInput = Convert.ToInt32(Console.ReadLine());
-            foreach (var booking in database.ActiveUser.UserBookings)
+            foreach (var booking in Database.ActiveUser.UserBookings)
             {
                 if (intInput == booking.BookingNumber)
                 {
-                    database.ActiveUser.UserBookings.Remove(booking);
-                    database.Bookings.Remove(booking);
+                    Database.ActiveUser.UserBookings.Remove(booking);
+                    Database.Bookings.Remove(booking);
                     break;
                 }
             }
         }
-        private static void EditBooking(IDatabase database)
+        private static void EditBooking()
         {
-            foreach (var booking in database.ActiveUser.UserBookings)
+            foreach (var booking in Database.ActiveUser.UserBookings)
             {
                 AdminBookingMethods.WriteBooking(booking);
             }
             Console.WriteLine("Type booking number of booking you would like to edit: ");
             int intInput = Convert.ToInt32(Console.ReadLine());
-            foreach (var booking in database.ActiveUser.UserBookings)
+            foreach (var booking in Database.ActiveUser.UserBookings)
             {
                 if (intInput == booking.BookingNumber)
                 {
@@ -91,11 +91,11 @@ namespace BokningApp
 
                             var inputLevel = AdminBookingMethods.ChooseLevelOfLesson();
 
-                            var inputInstructor = AdminBookingMethods.ChooseInstructorForLesson(database, inputDiscipline, inputLevel);
+                            var inputInstructor = AdminBookingMethods.ChooseInstructorForLesson(inputDiscipline, inputLevel);
 
                             var inputDay = AdminBookingMethods.ChooseDayForLesson();
 
-                            var inputTime = AdminBookingMethods.ChooseTimeForLesson(database, inputInstructor, inputDay);
+                            var inputTime = AdminBookingMethods.ChooseTimeForLesson(inputInstructor, inputDay);
 
                             booking.Discipline = inputDiscipline;
                             booking.Level = inputLevel;

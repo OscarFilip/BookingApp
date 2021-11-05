@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace BokningApp
 {
-    public class Database : IDatabase
+    public static class Database
     {
-        public List<User> Users { get; set; } = new List<User>();
-        public List<Instructor> Instructors { get; set; } = new List<Instructor>();
-        public List<Booking> Bookings { get; set; } = new List<Booking>();
-        public User ActiveUser { get; set; }
+        public static List<User> Users { get; set; } = new List<User>();
+        public static List<Instructor> Instructors { get; set; } = new List<Instructor>();
+        public static List<Booking> Bookings { get; set; } = new List<Booking>();
+        public static User ActiveUser { get; set; }
 
-        public Database()
+        static Database()
         {
             AddTestdata();
         }
 
-        private void AddTestdata()
+        private static void AddTestdata()
         {
             Users.Add(new User("Admin", true));
             Users.Add(new User("Marie Svensson", false));

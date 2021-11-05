@@ -9,7 +9,7 @@ namespace BokningApp
 {
     public class AdminInstructorMethods
     {
-        public static void HandleInstructorsMenu(IDatabase database)
+        public static void HandleInstructorsMenu()
         {
             bool runLoop = true;
             while (runLoop)
@@ -22,13 +22,13 @@ namespace BokningApp
                 switch (input)
                 {
                     case 1:
-                        AddInstructor(database);
+                        AddInstructor();
                         break;
                     case 2:
-                        RemoveInstructor(database);
+                        RemoveInstructor();
                         break;
                     case 3:
-                        EditInstructor(database);
+                        EditInstructor();
                         break;
                 }
             }
@@ -36,7 +36,7 @@ namespace BokningApp
 
 
 
-        private static void AddInstructor(IDatabase database)
+        private static void AddInstructor()
         {
             Console.WriteLine("Name of Instructor: ");
             string name = Console.ReadLine();
@@ -48,7 +48,7 @@ namespace BokningApp
             Level crosscountryLevel = AddDisciplineToIntructor();
             Console.WriteLine("Choose level of sitski discipline:");
             Level sitskiLevel = AddDisciplineToIntructor();
-            database.Instructors.Add(new Instructor(name, alpineSkiLevel, alpineSnowboardLevel, crosscountryLevel, sitskiLevel));
+            Database.Instructors.Add(new Instructor(name, alpineSkiLevel, alpineSnowboardLevel, crosscountryLevel, sitskiLevel));
         }
 
         private static Level AddDisciplineToIntructor()
@@ -84,21 +84,21 @@ namespace BokningApp
             }
             return inputLevel;
         }
-        private static void RemoveInstructor(IDatabase database)
+        private static void RemoveInstructor()
         {
-            WriteAllInstructors(database);
+            WriteAllInstructors();
             Console.WriteLine("Write the full name of the instructor you want to remove: ");
             
             string input = Console.ReadLine();
-             
-            database.Instructors.RemoveAll(Instructor => Instructor.Name == input);
+
+            Database.Instructors.RemoveAll(Instructor => Instructor.Name == input);
         }
-        private static void EditInstructor(IDatabase database)
+        private static void EditInstructor()
         {
-            WriteAllInstructors(database);
+            WriteAllInstructors();
             Console.WriteLine("Write the full name of the instructor you want to Edit: ");
             string strInput = Console.ReadLine();
-            foreach (var Instructor in database.Instructors)
+            foreach (var Instructor in Database.Instructors)
             {
                 if (Instructor.Name == strInput)
                 {
@@ -132,10 +132,10 @@ namespace BokningApp
             }
         }
 
-        private static void WriteAllInstructors(IDatabase database)
+        private static void WriteAllInstructors()
         {
             Console.WriteLine("All Instructors:");
-            foreach (var Instructor in database.Instructors)
+            foreach (var Instructor in Database.Instructors)
             {
                 Console.Write(Instructor.Name + ", ");
                 Console.Write("Alpine ski: " + Instructor.AlpineSkiLevel + ", ");

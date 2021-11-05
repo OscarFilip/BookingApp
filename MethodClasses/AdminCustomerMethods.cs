@@ -8,7 +8,7 @@ namespace BokningApp
 {
     public class AdminCustomerMethods
     {
-        public static void HandleCustomersMenu(IDatabase database)
+        public static void HandleCustomersMenu()
         {
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("[1] Add customer.");
@@ -18,17 +18,17 @@ namespace BokningApp
             switch (intInput)
             {
                 case 1:
-                    AddCustomer(database);
+                    AddCustomer();
                     break;
                 case 2:
-                    RemoveCustomer(database);
+                    RemoveCustomer();
                     break;
                 case 3:
-                    EditCustomer(database);
+                    EditCustomer();
                     break;
             }
         }
-        private static void AddCustomer(IDatabase database)
+        private static void AddCustomer()
         {
             Console.WriteLine("Choose name of new customer:");
             string inputName = Console.ReadLine();
@@ -45,30 +45,30 @@ namespace BokningApp
                 case 2:
                     break;
             }
-            database.Users.Add(new User(inputName, inputIsAdmin));
+            Database.Users.Add(new User(inputName, inputIsAdmin));
         }
-        private static void RemoveCustomer(IDatabase database)
+        private static void RemoveCustomer()
         {
             Console.WriteLine("All customers:");
-            WriteAllCustomers(database);
+            WriteAllCustomers();
             Console.WriteLine("Type full name of customer you would like to remove: ");
             string strInput = Console.ReadLine();
-            foreach (var user in database.Users)
+            foreach (var user in Database.Users)
             {
                 if (strInput == user.Name)
                 {
-                    database.Users.Remove(user);
+                    Database.Users.Remove(user);
                     break;
                 }
             }
         }
-        private static void EditCustomer(IDatabase database)
+        private static void EditCustomer()
         {
             Console.WriteLine("All customers:");
-            WriteAllCustomers(database);
+            WriteAllCustomers();
             Console.WriteLine("Type full name of customer you would like to edit: ");
             string strInput = Console.ReadLine();
-            foreach (var user in database.Users)
+            foreach (var user in Database.Users)
             {
                 if (strInput == user.Name)
                 {
@@ -101,9 +101,9 @@ namespace BokningApp
                 }
             }
         }
-        public static void WriteAllCustomers(IDatabase database)
+        public static void WriteAllCustomers()
         {
-            foreach (var User in database.Users)
+            foreach (var User in Database.Users)
             {
                 if (User.IsAdmin == false)
                 {

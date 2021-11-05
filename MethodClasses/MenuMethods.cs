@@ -9,7 +9,7 @@ namespace BokningApp
 {
     public class MenuMethods
     {
-        public static void Login(IDatabase database)
+        public static void Login()
         {
             User activeUser = new User();
             bool runMethod = true;
@@ -18,30 +18,34 @@ namespace BokningApp
                 Console.WriteLine("Hi! Please log in. ");
                 Console.WriteLine("Username: ");
                 string searchUserName = Console.ReadLine();
-                foreach (var user in database.Users)
+                foreach (var user in Database.Users)
                 {
                     if (user.Name == searchUserName)
                     {
-                        database.ActiveUser = user;
+                        Database.ActiveUser = user;
                         runMethod = false;
+                    }
+                    if (searchUserName == "0")
+                    {
+                        
                     }
                 }
             }
         }
-        public static void RunMenu(IDatabase database)
+        public static void RunMenu()
         {
-            if (database.ActiveUser.IsAdmin == true)
+            if (Database.ActiveUser.IsAdmin == true)
             {
-                AdminMenu(database);
+                AdminMenu();
             }
-            if (database.ActiveUser.IsAdmin == false)
+            if (Database.ActiveUser.IsAdmin == false)
             {
-                CustomerMenu(database);
+                CustomerMenu();
             }
         }
 
 
-        public static void AdminMenu(IDatabase database)
+        public static void AdminMenu()
         {
             bool runLoop = true;
             while (runLoop)
@@ -56,13 +60,13 @@ namespace BokningApp
 
                 {
                     case 1:
-                        AdminInstructorMethods.HandleInstructorsMenu(database);
+                        AdminInstructorMethods.HandleInstructorsMenu();
                         break;
                     case 2:
-                        AdminBookingMethods.HandleBookingsMenu(database);
+                        AdminBookingMethods.HandleBookingsMenu();
                         break;
                     case 3:
-                        AdminCustomerMethods.HandleCustomersMenu(database);
+                        AdminCustomerMethods.HandleCustomersMenu();
                         break;
                     case 4:
                         runLoop = false;
@@ -70,7 +74,7 @@ namespace BokningApp
                 }
             }
         }
-        private static void CustomerMenu(IDatabase database)
+        private static void CustomerMenu()
         {
             bool runLoop = true;
             while (runLoop)
@@ -84,11 +88,11 @@ namespace BokningApp
 
                 {
                     case 1:
-                        CustomerCustomerMethods.HandleBookings(database);
+                        CustomerCustomerMethods.HandleBookings();
                         break;
                     case 2:
                         Console.WriteLine("Choose new name:");
-                        database.ActiveUser.Name = Console.ReadLine();
+                        Database.ActiveUser.Name = Console.ReadLine();
                         break;
                     case 3:
                         runLoop = false;
